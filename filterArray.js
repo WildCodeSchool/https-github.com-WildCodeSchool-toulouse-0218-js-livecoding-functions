@@ -6,16 +6,31 @@ const persons = [
 	'Zoe'
 ]
 
-// Renvoyer les prénoms qui commencent par J
-function filterArray(anArray) {
+// Deuxième étape :
+// On passe une fonction de filtrage en paramètre
+// Il faut absolument passer une fonction comme deuxième paramètre
+function filterArray(anArray, filterFunc) {
   let results = []
   for(item of anArray) {
-    if(item[0] === 'J') {
+    if(filterFunc(item)) {
       results.push(item)
     }
   }
   return results
 }
 
-console.log(filterArray(persons))
-// ['Joe', 'Jack', 'John']
+function isFirstLetterJ(item) {
+  return item[0] === 'J'
+}
+
+function isFirstLetterM(item) {
+  return item[0] === 'M'
+}
+
+function hasThreeLetters(item) {
+  return item.length === 3
+}
+
+console.log(filterArray(persons, isFirstLetterJ))
+console.log(filterArray(persons, isFirstLetterM))
+console.log(filterArray(persons, hasThreeLetters))
