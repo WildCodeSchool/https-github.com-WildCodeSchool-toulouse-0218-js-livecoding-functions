@@ -3,6 +3,7 @@ const persons = [
 	'Jack',
 	'John',
 	'Mary',
+  'Oliver',
 	'Zoe'
 ]
 
@@ -31,6 +32,21 @@ function hasThreeLetters(item) {
   return item.length === 3
 }
 
+function hasLetterO(item) {
+  return item.includes('o') ||
+    item.includes('O')
+}
+
 console.log(filterArray(persons, isFirstLetterJ))
 console.log(filterArray(persons, isFirstLetterM))
 console.log(filterArray(persons, hasThreeLetters))
+console.log(filterArray(persons, hasLetterO))
+
+const withAtLeast4Letters = filterArray(
+  persons,
+  // function(item) {
+  //   return item.length >= 4
+  // }
+  item => item.length >= 4
+)
+console.log(withAtLeast4Letters)
